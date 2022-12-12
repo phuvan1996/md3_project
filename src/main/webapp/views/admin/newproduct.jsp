@@ -1,8 +1,10 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,16 +15,17 @@
         content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
+  <link rel="shortcut icon" href="<%=request.getContextPath()%>/views/admin/img/icons/icon-48x48.png"/>
 
   <link rel="canonical" href="https://demo-basic.adminkit.io/"/>
 
   <title>Amado.vn</title>
 
-  <link href="../admin/css/app.css" rel="stylesheet">
+  <link href="<%=request.getContextPath()%>/views/admin/css/app.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -43,17 +46,17 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="index.jsp">
+          <a class="sidebar-link" href="catalog.jsp.jsp">
             <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
           </a>
         </li>
         <li class="sidebar-item active">
-          <a class="sidebar-link" href="#">
+          <a class="sidebar-link" href="product.jsp">
             <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="user.jsp">
+          <a class="sidebar-link" href="user.html">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
           </a>
         </li>
@@ -248,29 +251,20 @@
       <div class="container-fluid p-0">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Demo Category Table</h3>
             <nav class="navbar navbar-expand-lg bg-light">
               <div class="container-fluid">
-                <a class="navbar-brand" href="newproduct.jsp">
-                  <button type="button" class="btn btn-success">+ Add new Product</button>
-                </a>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2 fst-italic" type="search"
-                         placeholder="Enter product's name... "
-                         aria-label="Search" name="productsearch">
-                  <button class="btn btn-outline-success" type="submit" name="action" value="search">search</button>
-                </form>
+
+<%--                  <button type="button" class="btn btn-success">+ Add new Product</button>--%>
               </div>
             </nav>
           </div>
           <!-- /.card-header -->
           <div class="mot">
-            <form action="<%=request.getContextPath()%>/ProducServelet" method="post">
+            <a class="navbar-brand" href="">
+            <form  action="<%=request.getContextPath()%>/ProductServlet" method="post" enctype="multipart/form-data">
+              <a class="navbar-brand" href="product.jsp">
+              </a>
               <table>
-                <tr>
-                  <td>ProductId</td>
-                  <td><input type="number" name="productId"></td>
-                </tr>
                 <tr>
                   <td>ProductName</td>
                   <td><input type="text" name="productName"></td>
@@ -284,8 +278,31 @@
                   <td><input type="number" name="quantity"></td>
                 </tr>
                 <tr>
-                  <td>title</td>
+                  <td>Title</td>
                   <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                  <td>ProductImage</td>
+                  <td><input type="file" name="image" id="proImage"></td>
+                </tr>
+                <tr>
+                  <td>Product Sub Image</td>
+                  <td><input type="file" name="subImage" id="subImage" multiple></td>
+                </tr>
+                <tr>
+                  <td>Catalog</td>
+                  <td>
+                    <select id="catalogID" name="catalog">
+                      <option value="0" selected>Catalog</option>
+                      <c:forEach items="${listCreat}" var="cat">
+                        <option value="${cat.catalogId}">${cat.catalogName}</option>
+                      </c:forEach>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td><textarea name="description" id="description"></textarea></td>
                 </tr>
                 <tr>
                   <td>Product Status</td>
@@ -295,46 +312,23 @@
                 </tr>
                 <tr>
                   <td colspan="2">
+                    <a href="<%=request.getContextPath()%>/ProductServlet?action=GetAll">
                     <input type="submit" value="Create" name="action"/>
+                    </a>
                   </td>
                 </tr>
               </table>
             </form>
+            </a>
+            <script>
+             CKEDITOR.replace("description")
+            </script>
           </div>
           <!-- /.card-body -->
         </div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row text-muted">
-          <div class="col-6 text-start">
-            <p class="mb-0">
-              <a class="text-muted" href="" target="_blank"><strong>DemoAdminKit</strong></a>
-              - <a class="text-muted" href="" target="_blank"><strong>Bootstrap Admin
-              Template</strong></a> &copy;
-            </p>
-          </div>
-          <div class="col-6 text-end">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Support</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Help Center</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Privacy</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Terms</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+<%--    </footer>--%>
   </div>
 </div>
 
@@ -565,3 +559,4 @@
 </body>
 
 </html>
+

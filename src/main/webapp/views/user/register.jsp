@@ -14,33 +14,33 @@
 <div class="mot" id="login">
   <section id="inner-wrapper" class="login">
     <article>
-      <form >
+      <form action="<%=request.getContextPath()%>/UserServlet" method="post">
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"> </i></span>
-            <input type="text" class="form-control" placeholder="Name" required>
+            <input type="text" class="form-control" placeholder="Name" name="username" required>
           </div>
         </div>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-            <input type="email" class="form-control" placeholder="Email Address" required>
+            <input type="email" class="form-control" placeholder="Email Address" name="email" required>
           </div>
         </div>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-key"> </i></span>
-            <input type="password" class="form-control" placeholder="Password" required>
+            <input type="password" class="form-control" placeholder="Password" name="password" required>
           </div>
         </div>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-key"> </i></span>
-            <input type="password" class="form-control" placeholder="Confirm Password" required>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpass" required>
           </div>
         </div>
-        <a href="login.jsp">
-          <button type="submit" class="btn btn-success btn-block">Submit</button>
+        <a href="<%=request.getContextPath()%>/views/user/login.jsp">
+          <button type="submit" class="btn btn-success btn-block" name="action" value="register">Submit</button>
         </a>
       </form>
     </article>

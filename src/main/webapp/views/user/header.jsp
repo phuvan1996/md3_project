@@ -18,30 +18,30 @@
     <!-- Amado Nav -->
     <nav class="amado-nav">
         <ul>
-            <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="shop.jsp">Shop</a></li>
-            <li><a href="product-detail.jsp">Product</a></li>
+            <li class="active"><a href="<%=request.getContextPath()%>/HomeServlet?action=home">Home</a></li>
+            <li><a href="<%=request.getContextPath()%>/HomeServlet?action=shop">Shop</a></li>
+            <li><a href="<%=request.getContextPath()%>/HomeServlet?action=product-detail">Product</a></li>
             <!-- <li><a href="checkout.html">Checkout</a></li> -->
         </ul>
     </nav>
     <!-- Button Group -->
     <div class="amado-btn-group mt-30 mb-100">
-        <a href="register.jsp" class="btn amado-btn mb-15" style="background-image: linear-gradient(
+        <a href="<%=request.getContextPath()%>/views/user/register.jsp" class="btn amado-btn mb-15" style="background-image: linear-gradient(
                     to right,
                     #25aae1,
                     #40e495,
                     #30dd8a,
                     #2bb673
                     );border-radius: 30px;
-                box-shadow: 0 4px 15px 0 rgba(8, 233, 225, 0.75)">Register</a>
-        <a href="login.jsp" class="btn amado-btn active" style="background-image: linear-gradient(
+                box-shadow: 0 4px 15px 0 rgba(8, 233, 225, 0.75)" name="register">Register</a>
+        <a href="<%=request.getContextPath()%>/HomeServlet?action=home" class="btn amado-btn active" style="background-image: linear-gradient(
                     to right,
                     #25aae1,
                     #40e495,
                     #30dd8a,
                     #2bb673
                     );border-radius: 30px;
-                box-shadow: 0 4px 15px 0 rgba(8, 233, 225, 0.75)">Login</a>
+                box-shadow: 0 4px 15px 0 rgba(8, 233, 225, 0.75)" name="login">Login</a>
     </div>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">

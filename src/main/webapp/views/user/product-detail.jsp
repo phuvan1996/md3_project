@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MR. NEN
@@ -23,9 +24,9 @@
   <link rel="icon" href="../img/core-img/favicon.ico">
 
   <!-- Core Style CSS -->
-  <link rel="stylesheet" href="../css/core-style.css">
-  <link rel="stylesheet" href="../scss/style.scss">
-  <link rel="stylesheet" href="../css/comment.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/views/css/core-style.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/views/scss/style.scss">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/views/css/comment.css">
 
 </head>
 
@@ -41,7 +42,7 @@
         <div class="search-content">
           <form action="#" method="get">
             <input type="search" name="search" id="search" placeholder="Type your keyword...">
-            <button type="submit"><img src="../img/core-img/search.png" alt=""></button>
+            <button type="submit"><img src="<%=request.getContextPath()%>/views/img/core-img/search.png" alt=""></button>
           </form>
         </div>
       </div>
@@ -57,7 +58,7 @@
   <div class="mobile-nav">
     <!-- Navbar Brand -->
     <div class="amado-navbar-brand">
-      <a href="home.jsp"><img src="../img/core-img/logo.png" alt=""></a>
+      <a href="<%=request.getContextPath()%>/HomeServlet?action=productdetail"><img src="<%=request.getContextPath()%>/views/img/core-img/logo.png" alt=""></a>
     </div>
     <!-- Navbar Toggler -->
     <div class="amado-navbar-toggler">
@@ -73,14 +74,14 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-      <a href="home.jsp"><img src="../img/core-img/logo.png" alt=""></a>
+      <a href="<%=request.getContextPath()%>/HomeServlet?action=productdetail"><img src="<%=request.getContextPath()%>/views/img/core-img/logo.png" alt=""></a>
     </div>
     <!-- Amado Nav -->
     <nav class="amado-nav">
       <ul>
-        <li><a href="home.jsp">Home</a></li>
-        <li><a href="shop.jsp">Shop</a></li>
-        <li class="active"><a href="product-detail.jsp">Product</a></li>
+        <li><a href="<%=request.getContextPath()%>/HomeServlet?action=home">Home</a></li>
+        <li><a href="<%=request.getContextPath()%>/HomeServlet?action=shop">Shop</a></li>
+        <li class="active"><a href="<%=request.getContextPath()%>/HomeServlet?action=productdetail">Product</a></li>
         <!-- <li><a href="cart.html">Cart</a></li> -->
         <!-- <li><a href="checkout.html">Checkout</a></li> -->
       </ul>
@@ -106,9 +107,9 @@
     </div> -->
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-      <a href="cart.jsp" class="cart-nav"><img src="../img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-      <a href="#" class="fav-nav"><img src="../img/core-img/favorites.png" alt=""> Favourite</a>
-      <a href="#" class="search-nav"><img src="../img/core-img/search.png" alt=""> Search</a>
+      <a href="cart.jsp" class="cart-nav"><img src="<%=request.getContextPath()%>/views/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+      <a href="#" class="fav-nav"><img src="<%=request.getContextPath()%>/views/img/core-img/favorites.png" alt=""> Favourite</a>
+      <a href="#" class="search-nav"><img src="<%=request.getContextPath()%>/views/img/core-img/search.png" alt=""> Search</a>
     </div>
     <!-- Social Button -->
     <div class="social-info d-flex justify-content-between">
@@ -128,7 +129,7 @@
         <div class="col-12">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-50">
-              <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
+              <li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/HomeServlet?action=home">Home</a></li>
               <!-- <li class="breadcrumb-item"><a href="#">Furniture</a></li>
               <li class="breadcrumb-item"><a href="#">Chairs</a></li> -->
               <!-- <li class="breadcrumb-item active" aria-current="page">white modern chair</li> -->
@@ -141,35 +142,17 @@
         <div class="col-12 col-lg-7">
           <div class="single_product_thumb">
             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+
               <ol class="carousel-indicators">
-                <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(../img/product-img/pro-big-1.jpg);">
+                  <c:forEach items="${pro.listImageUrl}" var="link">
+                <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(<%=request.getContextPath()%>/images/${link});">
                 </li>
-                <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(../img/product-img/pro-big-2.jpg);">
-                </li>
-                <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(../img/product-img/pro-big-3.jpg);">
-                </li>
-                <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(../img/product-img/pro-big-4.jpg);">
-                </li>
+                  </c:forEach>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <a class="gallery_img" href="../img/product-img/pro-big-1.jpg">
-                    <img class="d-block w-100" src="../img/product-img/pro-big-1.jpg" alt="First slide">
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <a class="gallery_img" href="../img/product-img/pro-big-2.jpg">
-                    <img class="d-block w-100" src="../img/product-img/pro-big-2.jpg" alt="Second slide">
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <a class="gallery_img" href="../img/product-img/pro-big-3.jpg">
-                    <img class="d-block w-100" src="../img/product-img/pro-big-3.jpg" alt="Third slide">
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <a class="gallery_img" href="../img/product-img/pro-big-4.jpg">
-                    <img class="d-block w-100" src="../img/product-img/pro-big-4.jpg" alt="Fourth slide">
+                  <a  href="<%=request.getContextPath()%>/HomeServlet?action=detail&&productId=${pro.productId}">
+                    <img src="<%=request.getContextPath()%>/images/${pro.productImage}" alt="Anh" width="400px" height="400px" />
                   </a>
                 </div>
               </div>
@@ -181,8 +164,8 @@
             <!-- Product Meta Data -->
             <div class="product-meta-data">
               <div class="line"></div>
-              <p class="product-price">$180</p>
-              <a href="product-detail.jsp">
+              <p class="product-price">${pro.price}</p>
+              <a href="<%=request.getContextPath()%>/views/user/product-detail.jsp">
                 <h6>White Modern Chair</h6>
               </a>
               <!-- Ratings & Review -->
@@ -204,7 +187,7 @@
             </div>
 
             <!-- Add to Cart Form -->
-            <form class="cart clearfix" method="post">
+            <form class="cart clearfix" method="get">
               <div class="cart-btn d-flex mb-50">
                 <p>Qty</p>
                 <div class="quantity">
@@ -213,9 +196,7 @@
                   <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                 </div>
               </div>
-              <a href="cart.jsp">
-                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
-              </a>
+                <a class="btn amado-btn" href="<%=request.getContextPath()%>/ShoppingCartServlet?action=addCart&&productId=${pro.productId}">Add to cart</a>
             </form>
           </div>
         </div>
@@ -231,7 +212,7 @@
     <div class="col-md-8">
       <div class="d-flex flex-column comment-section">
         <div class="bg-white p-2">
-          <div class="d-flex flex-row user-info"><img class="rounded-circle" src="../img/product-img/z3900760444766_b0cf6b0e0db65df679424deca5b998eb.jpg" width="40">
+          <div class="d-flex flex-row user-info"><img class="rounded-circle" src="<%=request.getContextPath()%>/views/img/product-img/z3900760444766_b0cf6b0e0db65df679424deca5b998eb.jpg" width="40">
             <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Jonny Dang</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
           </div>
           <div class="mt-2">
@@ -246,7 +227,7 @@
           </div>
         </div>
         <div class="bg-light p-2">
-          <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="../img/product-img/z3900760452405_cd2daf5800ada12ec3a1b14b8d33fa5b.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
+          <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="<%=request.getContextPath()%>/views/img/product-img/z3900760452405_cd2daf5800ada12ec3a1b14b8d33fa5b.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
           <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
         </div>
       </div>
@@ -289,7 +270,7 @@
         <div class="single_widget_area">
           <!-- Logo -->
           <div class="footer-logo mr-50">
-            <a href="home.jsp"><img src="../img/core-img/logo2.png" alt=""></a>
+            <a href="<%=request.getContextPath()%>/HomeServlet?action=home"><img src="<%=request.getContextPath()%>/views/img/core-img/logo2.png" alt=""></a>
           </div>
           <!-- Copywrite Text -->
           <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -307,13 +288,13 @@
               <div class="collapse navbar-collapse" id="footerNavContent">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="home.jsp">Home</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/HomeServlet?ation=home">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="shop.jsp">Shop</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/HomeServlet?action=shop">Shop</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="product-detail.jsp">Product</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/HomeServlet?action=productdetail">Product</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="cart.jsp">Cart</a>
@@ -333,16 +314,26 @@
 <!-- ##### Footer Area End ##### -->
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="../js/jquery/jquery-2.2.4.min.js"></script>
+<script src="<%=request.getContextPath()%>/views/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
-<script src="../js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/views/js/popper.min.js"></script>
 <!-- Bootstrap js -->
-<script src="../js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/views/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="../js/plugins.js"></script>
+<script src="<%=request.getContextPath()%>/views/js/plugins.js"></script>
 <!-- Active js -->
-<script src="../js/active.js"></script>
-
+<script src="<%=request.getContextPath()%>/views/js/active.js"></script>
+<%--<div>--%>
+<%--  <div><img src="<%=request.getContextPath()%>/images/${pro.productImage}"/></div>--%>
+<%--  <div>--%>
+<%--    <c:forEach items="${pro.listImageUrl}" var="link">--%>
+<%--      <img src="<%=request.getContextPath()%>/images/${link}"/>--%>
+<%--    </c:forEach>--%>
+<%--  </div>--%>
+<%--  <p>${pro.title}</p>--%>
+<%--  <p>${pro.price}VNĐ</p>--%>
+<%--  <p>${pro.description}</p>--%>
+<%--</div>--%>
 </body>
 
 </html>

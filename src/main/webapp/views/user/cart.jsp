@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MR. NEN
@@ -20,11 +21,11 @@
   <title>Amado - Furniture Ecommerce Template | Cart</title>
 
   <!-- Favicon  -->
-  <link rel="icon" href="../img/core-img/favicon.ico">
+  <link rel="icon" href="<%=request.getContextPath()%>/views/img/core-img/favicon.ico">
 
   <!-- Core Style CSS -->
-  <link rel="stylesheet" href="../css/core-style.css">
-  <link rel="stylesheet" href="../scss/style.scss">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/views/css/core-style.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/views/scss/style.scss">
 
 </head>
 
@@ -40,7 +41,7 @@
         <div class="search-content">
           <form action="#" method="get">
             <input type="search" name="search" id="search" placeholder="Type your keyword...">
-            <button type="submit"><img src="../img/core-img/search.png" alt=""></button>
+            <button type="submit"><img src="<%=request.getContextPath()%>/views/img/core-img/search.png" alt=""></button>
           </form>
         </div>
       </div>
@@ -56,7 +57,7 @@
   <div class="mobile-nav">
     <!-- Navbar Brand -->
     <div class="amado-navbar-brand">
-      <a href="home.jsp"><img src="../img/core-img/logo.png" alt=""></a>
+      <a href="home.jsp"><img src="<%=request.getContextPath()%>/views/img/core-img/logo.png" alt=""></a>
     </div>
     <!-- Navbar Toggler -->
     <div class="amado-navbar-toggler">
@@ -72,14 +73,14 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-      <a href="home.jsp"><img src="../img/core-img/logo.png" alt=""></a>
+      <a href="home.jsp"><img src="<%=request.getContextPath()%>/views/img/core-img/logo.png" alt=""></a>
     </div>
     <!-- Amado Nav -->
     <nav class="amado-nav">
       <ul>
-        <li><a href="home.jsp">Home</a></li>
-        <li><a href="shop.jsp">Shop</a></li>
-        <li><a href="product-detail.jsp">Product</a></li>
+        <li><a href="<%=request.getContextPath()%>/HomeServlet?action=home">Home</a></li>
+        <li><a href="<%=request.getContextPath()%>/HomeServlet?action=shop">Shop</a></li>
+        <li><a href="<%=request.getContextPath()%>/HomeServlet?action=shop">Product</a></li>
         <!-- <li class="active"><a href="cart.html">Cart</a></li> -->
         <!-- <li><a href="checkout.html">Checkout</a></li> -->
       </ul>
@@ -138,19 +139,20 @@
               </tr>
               </thead>
               <tbody>
+              <c:forEach items="${listCart}" var="cart">
               <tr>
                 <td class="cart_product_img">
-                  <a href="#"><img src="../img/bg-img/cart1.jpg" alt="Product"></a>
+                  <a href="#"><img src="<%=request.getContextPath()%>/images/${cart.product.productImage}" alt="Product"></a>
                 </td>
                 <td class="cart_product_desc">
-                  <h5>White Modern Chair</h5>
+                  <h5>${cart.product.productName}</h5>
                 </td>
                 <td class="price">
-                  <span>$130</span>
+                  <span>${cart.product.price}</span>
                 </td>
                 <td class="qty">
                   <div class="qty-btn d-flex">
-                    <p>Qty</p>
+                    <p>${cart.quantity}</p>
                     <div class="quantity">
                       <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
                       <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
@@ -159,48 +161,7 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td class="cart_product_img">
-                  <a href="#"><img src="../img/bg-img/cart2.jpg" alt="Product"></a>
-                </td>
-                <td class="cart_product_desc">
-                  <h5>Minimal Plant Pot</h5>
-                </td>
-                <td class="price">
-                  <span>$10</span>
-                </td>
-                <td class="qty">
-                  <div class="qty-btn d-flex">
-                    <p>Qty</p>
-                    <div class="quantity">
-                      <span class="qty-minus" onclick="var effect = document.getElementById('qty2'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                      <input type="number" class="qty-text" id="qty2" step="1" min="1" max="300" name="quantity" value="1">
-                      <span class="qty-plus" onclick="var effect = document.getElementById('qty2'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="cart_product_img">
-                  <a href="#"><img src="../img/bg-img/cart3.jpg" alt="Product"></a>
-                </td>
-                <td class="cart_product_desc">
-                  <h5>Minimal Plant Pot</h5>
-                </td>
-                <td class="price">
-                  <span>$10</span>
-                </td>
-                <td class="qty">
-                  <div class="qty-btn d-flex">
-                    <p>Qty</p>
-                    <div class="quantity">
-                      <span class="qty-minus" onclick="var effect = document.getElementById('qty3'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                      <input type="number" class="qty-text" id="qty3" step="1" min="1" max="300" name="quantity" value="1">
-                      <span class="qty-plus" onclick="var effect = document.getElementById('qty3'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              </c:forEach>
               </tbody>
             </table>
           </div>

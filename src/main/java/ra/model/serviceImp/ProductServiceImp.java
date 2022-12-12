@@ -6,7 +6,7 @@ import ra.model.service.ProductService;
 
 import java.util.List;
 
-public class ProductServiceImp implements ProductService<Product,String> {
+public class ProductServiceImp implements ProductService<Product,Integer> {
     private ProductImp productDao=new ProductImp();
     @Override
     public List<Product> getAll() {
@@ -24,17 +24,23 @@ public class ProductServiceImp implements ProductService<Product,String> {
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Integer id) {
         return productDao.delete(id);
     }
 
     @Override
-    public Product getById(String id) {
+    public Product getById(Integer id) {
         return productDao.getById(id);
     }
 
     @Override
     public List<Product> searchByName(String name) {
-        return null;
+        return productDao.searchByName(name);
+    }
+
+    @Override
+    public List<Product> getProductByCatalogId(Integer id) {
+
+        return productDao.getProductByCatalogId(id);
     }
 }

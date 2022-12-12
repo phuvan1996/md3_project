@@ -3,15 +3,25 @@ package ra.model.entyti;
 public class Catalog {
     private int catalogId;
     private String catalogName;
+    private String title;
     private boolean catalogStatus;
 
     public Catalog() {
     }
 
-    public Catalog(int catalogId, String catalogName, boolean catalogStatus) {
+    public Catalog(int catalogId, String catalogName, String title, boolean catalogStatus) {
         this.catalogId = catalogId;
         this.catalogName = catalogName;
+        this.title = title;
         this.catalogStatus = catalogStatus;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getCatalogId() {

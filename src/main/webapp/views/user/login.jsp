@@ -24,8 +24,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Meta tag Keywords -->
     <!-- css files -->
-    <link rel="stylesheet" href="../scss/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
-    <link rel="stylesheet" href="../scss/stylelogin.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/scss/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/scss/stylelogin.css" type="text/css" media="all" /> <!-- Style-CSS -->
     <!-- //css files -->
     <!-- web-fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
@@ -43,15 +43,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--form-stars-here-->
     <div class="wthree-form">
         <h2>F U R N I T U R E</h2>
-        <form action="#" method="post">
+        <form action="<%=request.getContextPath()%>/UserServlet" method="post">
             <div class="form-sub-w3">
-                <input type="text" name="Username" placeholder="Username " required=""/>
+                <input type="text" name="username" placeholder="Username " required=""/>
                 <div class="icon-w3">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
             </div>
             <div class="form-sub-w3">
-                <input type="password" name="Password" placeholder="Password" required=""/>
+                <input type="password" name="password" placeholder="Password" required=""/>
                 <div class="icon-w3">
                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                 </div>
@@ -62,11 +62,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </label>
             <div class="clear"></div>
             <div class="submit-agileits">
-                <input type="submit" value="Login">
+                <input type="submit"  name="action" value="login">
             </div>
-
         </form>
-
     </div>
     <!--//form-ends-here-->
 

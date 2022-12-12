@@ -36,22 +36,22 @@
                     Pages
                 </li>
                 <li class="sidebar-item active">
-                    <a class="sidebar-link" href="newcatalog.jsp">
+                    <a class="sidebar-link" href="index.jsp">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="CatalogServlet?action=catalog">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/CatalogServlet?action=catalog">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="product.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/ProductServlet?action=GetAll">
                         <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="user.jsp">
+                    <a class="sidebar-link" href="<%=request.getContextPath()%>/UserServlet?action=GetAll">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>

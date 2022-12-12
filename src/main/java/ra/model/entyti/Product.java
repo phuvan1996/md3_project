@@ -1,32 +1,41 @@
 package ra.model.entyti;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
-    private String productId;
+    private int productId;
     private String productName;
     private float price;
     private int quantity;
     private String title;
+    private String description;
     private boolean productStatus;
     private String productImage;
+    private int catalogId;
+    private List<String> listImageUrl = new ArrayList<>();
 
     public Product() {
     }
 
-    public Product(String productId, String productName, float price, int quantity, String title, boolean productStatus, String productImage) {
+    public Product(int productId, String productName, float price, int quantity, String title, String description, boolean productStatus, String productImage, int catalogId, List<String> listImageUrl) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.title = title;
+        this.description = description;
         this.productStatus = productStatus;
         this.productImage = productImage;
+        this.catalogId = catalogId;
+        this.listImageUrl = listImageUrl;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -62,6 +71,14 @@ public class Product {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public boolean isProductStatus() {
         return productStatus;
     }
@@ -76,5 +93,21 @@ public class Product {
 
     public void setProductImage(String productImage) {
         this.productImage = productImage;
+    }
+
+    public int getCatalogId() {
+        return catalogId;
+    }
+
+    public void setCatalogId(int catalogId) {
+        this.catalogId = catalogId;
+    }
+
+    public List<String> getListImageUrl() {
+        return listImageUrl;
+    }
+
+    public void setListImageUrl(List<String> listImageUrl) {
+        this.listImageUrl = listImageUrl;
     }
 }
